@@ -1,10 +1,10 @@
 const express = require('express');
 const path = require('path');
 const ejsMate = require('ejs-mate');
-const methodOverride = require('method-override');
+
 const session = require('express-session');
 
-
+const methodOverride = require('method-override');
 const app = express();
 
 app.engine('ejs', ejsMate)
@@ -17,7 +17,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 
 
 
-app.get('/{*any}', (req, res) => {
+app.get('/{*any}', (req, res, next) => {
     res.render('home')
 });
 
